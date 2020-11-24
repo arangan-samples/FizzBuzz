@@ -76,7 +76,7 @@ namespace FizzBuzzLib.Test
                 results.AppendFormat("{0} ", returnVal);
             }
 
-            Assert.Equal("1 Fizz Buzz Fizz 5 FizzBuzz 7 Fizz Buzz Fizz ", returnVal.ToString());
+            Assert.Equal("1 Fizz Buzz Fizz 5 FizzBuzz 7 Fizz Buzz Fizz ", results.ToString());
         }
 
         [Theory]

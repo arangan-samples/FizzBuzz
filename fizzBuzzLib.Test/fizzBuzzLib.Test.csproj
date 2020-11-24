@@ -17,4 +17,9 @@
     <ProjectReference Include="..\fizzBuzzLib\fizzBuzzLib.csproj" />
   </ItemGroup>
 
+  <Target Name="PostClean" AfterTargets="Clean">
+    <Exec Command="rm -rf ./bin" />
+    <Exec Command="rm -rf ./obj" />
+  </Target>
+
 </Project>

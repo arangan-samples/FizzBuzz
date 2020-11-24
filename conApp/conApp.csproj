@@ -9,4 +9,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <Target Name="PostClean" AfterTargets="Clean">
+    <Exec Command="rm -rf ./bin" />
+    <Exec Command="rm -rf ./obj" />
+  </Target>
+
 </Project>
