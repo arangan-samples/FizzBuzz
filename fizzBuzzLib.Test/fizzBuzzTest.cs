@@ -1,6 +1,8 @@
 using System;
 using Xunit;
 using FizzBuzzLib;
+using System.Collections.Generic;
+using System.Text;
 
 namespace FizzBuzzLib.Test
 {
@@ -36,13 +38,15 @@ namespace FizzBuzzLib.Test
             Assert.Throws<ArgumentException>(() => new FizzBuzz(upperBound, divisor1, divisor2, divisor1Word, divisor2Word));
         }
 
-        [Theory]
-        [InlineData(100, 3, 5, "fizz", "buzz")]
-        [InlineData(200, 2, 6, "fizz", "buzz")]
-        [InlineData(25, 7, 8, "fizz", "buzz")]
-        [InlineData(75, 9, 9, "fizz", "buzz")]
-        public void Can_Initialize_fizzBuzz_Class_With_Proper_Values(int upperBound, int divisor1, int divisor2, string divisor1Word, string divisor2Word)
+        [Fact]
+        public void Can_Initialize_fizzBuzz_Class_With_Proper_Values()
         {
+            int upperBound = 75;
+            int divisor1 = 9;
+            int divisor2 = 10;
+            string divisor1Word = "Fizz";
+            string divisor2Word = "Buzz";
+
             FizzBuzz fizzBuzz = new FizzBuzz(upperBound, divisor1, divisor2, divisor1Word, divisor2Word);
 
             Assert.Equal(upperBound, fizzBuzz.UpperBound);
@@ -54,10 +58,31 @@ namespace FizzBuzzLib.Test
             Assert.Equal(0, fizzBuzz._sb.Length);
         }
 
+        [Fact]
+        public void Can_Calculate_fizzBuzz_Values()
+        {
+            int upperBound = 10;
+            int divisor1 = 2;
+            int divisor2 = 3;
+            string divisor1Word = "Fizz";
+            string divisor2Word = "Buzz";
+
+            FizzBuzz fizzBuzz = new FizzBuzz(upperBound, divisor1, divisor2, divisor1Word, divisor2Word);
+            StringBuilder results = new StringBuilder();
+
+            string returnVal = string.Empty;
+            while ((returnVal = fizzBuzz.GetNext()) != null)
+            {
+                results.AppendFormat("{0} ", returnVal);
+            }
+
+            Assert.Equal("1 Fizz Buzz Fizz 5 FizzBuzz 7 Fizz Buzz Fizz ", returnVal.ToString());
+        }
+
         [Theory]
         [InlineData(100, 3, 5, "fizz", "buzz")]
-        [InlineData(100, 7, 6, "fizz", "buzz")]
-        public void fizzBuzz_fetches_Proper_Values(int upperBound, int divisor1, int divisor2, string divisor1Word, string divisor2Word)
+        [InlineData(100, 7, 6, "woof", "bow")]
+        public void Can_Calculate_fizzBuzz_Values_COMPLEX_TEST(int upperBound, int divisor1, int divisor2, string divisor1Word, string divisor2Word)
         {
             FizzBuzz fizzBuzz = new FizzBuzz(upperBound, divisor1, divisor2, divisor1Word, divisor2Word);
             int lcm = 0; // this is the LCM of divisor1, and divisor2
@@ -73,14 +98,14 @@ namespace FizzBuzzLib.Test
             {
                 lcm = divisor2;
             }
-            else 
+            else
             {
                 lcm = divisor1 * divisor2;
             }
 
 
             string val = string.Empty;
-            for(int x=1; x<= upperBound; x++)
+            for (int x = 1; x <= upperBound; x++)
             {
                 val = fizzBuzz.GetNext();
                 if (x % lcm == 0)

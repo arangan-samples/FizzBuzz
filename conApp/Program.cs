@@ -12,7 +12,11 @@ namespace conApp
         // extra credit --- build script that will run and test
         static void Main(string[] args)
         {
-            FizzBuzz fizzBuzz = new FizzBuzz(100, 3,5, "fizz","buzz");
+            FizzBuzz fizzBuzz = new FizzBuzz(upperBound:100, 
+                                             divisor1:3,
+                                             divisor2:5, 
+                                             divisor1Word:"fizz",
+                                             divisor2Word:"buzz");
 
             string val = string.Empty;
 

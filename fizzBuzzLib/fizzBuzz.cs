@@ -9,15 +9,15 @@ namespace FizzBuzzLib
     {
         public int UpperBound { get; }
 
-        internal int? Divisor1 { get; }
+        internal int Divisor1 { get; }
 
-        internal int? Divisor2 { get; }
+        internal int Divisor2 { get; }
 
         internal string Divisor1Word { get; }
 
         internal string Divisor2Word { get; }
 
-        internal int _start = 0;
+        internal int _start;
 
         internal StringBuilder _sb;
 
@@ -32,22 +32,22 @@ namespace FizzBuzzLib
 
             _sb.Clear();
 
-            if (_start % Divisor1 == 0)
+            if (_start % Divisor1 == 0)  // if divisible by first number, then append the word to the stringBuffer
             {
                 _sb.Append(Divisor1Word);
             }
 
-            if (_start % Divisor2 == 0)
+            if (_start % Divisor2 == 0) // if divisible by second number, then append the word to the stringBuffer
             {
                 _sb.Append(Divisor2Word);
             }
 
-            if (_sb.Length > 0)
+            if (_sb.Length > 0)  // if stringBuffer has some value inside it, return it
             {
                 return _sb.ToString();
             }
 
-            return _start.ToString();
+            return _start.ToString(); // return the number as is, as a last resort.
         }
 
         public FizzBuzz(int upperBound, int divisor1, int divisor2, string divisor1Word, string divisor2Word)
@@ -73,6 +73,7 @@ namespace FizzBuzzLib
             Divisor1Word = divisor1Word;
             Divisor2Word = divisor2Word;
             _sb = new StringBuilder();
+            _start = 0;
         }
 
     }
