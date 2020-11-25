@@ -54,7 +54,7 @@ namespace FizzBuzzLib.Test
             Assert.Equal(divisor2, fizzBuzz.Divisor2);
             Assert.Equal(divisor1Word, fizzBuzz.Divisor1Word);
             Assert.Equal(divisor2Word, fizzBuzz.Divisor2Word);
-            Assert.Equal(0, fizzBuzz._start);
+            Assert.Equal(0, fizzBuzz._current);
             Assert.Equal(0, fizzBuzz._sb.Length);
         }
 
