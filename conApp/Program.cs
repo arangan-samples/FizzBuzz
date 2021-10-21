@@ -24,6 +24,16 @@ namespace conApp
             {
                 Console.WriteLine(val);
             }
+            
+            FizzBuzz2 fizzBuzz2 = new FizzBuzz2(upperBound:100, 
+                                             divisor1:3,
+                                             divisor2:5, 
+                                             divisor1Word:"fizz",
+                                             divisor2Word:"buzz");
+            foreach (string str in fizzBuzz2)
+            {
+               Console.WriteLine(str) ;
+            }            
         }
     }
 }
